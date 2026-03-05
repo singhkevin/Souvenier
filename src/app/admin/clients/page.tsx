@@ -193,79 +193,61 @@ export default function ClientManager() {
 
                     {/* Client List */}
                     <div className="lg:col-span-2">
-                            <div className="overflow-x-auto custom-scrollbar">
-                                <table className="w-full text-left">
-                                    <thead className="bg-gray-800/50">
-                                        <tr className="text-gray-500 text-xs uppercase tracking-widest font-bold">
-                                            <th className="px-8 py-4">Brand</th>
-                                            <th className="px-8 py-4">Slug / URL</th>
-                                            <th className="px-8 py-4">Margin</th>
-                                            <th className="px-8 py-4">Branding</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-gray-800">
-                                        {clients.map((client) => (
-                                            <tr key={client.id} className="hover:bg-white/[0.02] transition-colors group">
-                                                <td className="px-8 py-6">
-                                                    <div className="flex items-center gap-4">
-                                                        <div className="w-10 h-10 rounded-lg bg-gray-800 border border-gray-700 overflow-hidden flex items-center justify-center">
-                                                            {client.logo_url ? (
-                                                                <img src={client.logo_url} className="w-full h-full object-contain" />
-                                                            ) : (
-                                                                <span className="text-xs font-bold text-gray-600">{client.name.charAt(0)}</span>
-                                                            )}
-                                                        </div>
-                                                        <div>
-                                                            <div className="font-bold text-lg">{client.name}</div>
-                                                            <div className="text-xs text-gray-500">{client.email}</div>
-                                                        </div>
+                        <div className="overflow-x-auto custom-scrollbar">
+                            <table className="w-full text-left">
+                                <thead className="bg-gray-800/50">
+                                    <tr className="text-gray-500 text-xs uppercase tracking-widest font-bold">
+                                        <th className="px-8 py-4">Brand</th>
+                                        <th className="px-8 py-4">Slug / URL</th>
+                                        <th className="px-8 py-4">Margin</th>
+                                        <th className="px-8 py-4">Branding</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-gray-800">
+                                    {clients.map((client) => (
+                                        <tr key={client.id} className="hover:bg-white/[0.02] transition-colors group">
+                                            <td className="px-8 py-6">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="w-10 h-10 rounded-lg bg-gray-800 border border-gray-700 overflow-hidden flex items-center justify-center">
+                                                        {client.logo_url ? (
+                                                            <img src={client.logo_url} className="w-full h-full object-contain" />
+                                                        ) : (
+                                                            <span className="text-xs font-bold text-gray-600">{client.name.charAt(0)}</span>
+                                                        )}
                                                     </div>
-                                                </td>
-                                                <td className="px-8 py-6 font-mono text-cyan-500 text-sm">
-                                                    /{client.slug}
-                                                </td>
-                                                <td className="px-8 py-6">
-                                                    <span className="bg-gray-800 px-3 py-1 rounded-full text-sm font-bold">
-                                                        {client.margin_percent}%
-                                                    </span>
-                                                </td>
-                                                <td className="px-8 py-6">
-                                                    <div
-                                                        className="w-8 h-8 rounded-full shadow-lg border-2 border-gray-800"
-                                                        style={{ backgroundColor: client.primary_color }}
-                                                    />
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                            {clients.length === 0 && (
-                                <div className="p-20 text-center text-gray-600">
-                                    No brands onboarded yet.
-                                </div>
-                            )}
+                                                    <div>
+                                                        <div className="font-bold text-lg">{client.name}</div>
+                                                        <div className="text-xs text-gray-500">{client.email}</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td className="px-8 py-6 font-mono text-cyan-500 text-sm">
+                                                /{client.slug}
+                                            </td>
+                                            <td className="px-8 py-6">
+                                                <span className="bg-gray-800 px-3 py-1 rounded-full text-sm font-bold">
+                                                    {client.margin_percent}%
+                                                </span>
+                                            </td>
+                                            <td className="px-8 py-6">
+                                                <div
+                                                    className="w-8 h-8 rounded-full shadow-lg border-2 border-gray-800"
+                                                    style={{ backgroundColor: client.primary_color }}
+                                                />
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
+                        {clients.length === 0 && (
+                            <div className="p-20 text-center text-gray-600">
+                                No brands onboarded yet.
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
-            <style jsx global>{`
-                .custom-scrollbar::-webkit-scrollbar {
-                    width: 6px;
-                    height: 6px;
-                }
-                .custom-scrollbar::-webkit-scrollbar-track {
-                    background: rgba(255, 255, 255, 0.02);
-                    border-radius: 10px;
-                }
-                .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: rgba(6, 182, 212, 0.3);
-                    border-radius: 10px;
-                }
-                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: rgba(6, 182, 212, 0.5);
-                }
-            `}</style>
-        </div >
+        </div>
     )
 }
