@@ -81,3 +81,62 @@ export async function getOrders() {
         return []
     }
 }
+
+export async function createOrder({
+    userId,
+    clientId,
+    productId,
+}: {
+    userId: string
+    clientId: string
+    productId: string
+}) {
+    try {
+        // 1. Get product price
+        const { data: product, error: productError } = await supabaseAdmin
+            .from('products')
+            .select('price')
+            .eq('id', productId)
+            .single()
+
+        if (productError) throw productError
+
+        // 2. Create the Order
+        const { data: order, error: orderError } = await supabaseAdmin
+            .from('orders')
+            .insert([
+                {
+                    user_id: userId,
+                    client_id: clientId,
+                    total_amount: product.price,
+                    status: 'placed'
+                }
+            ])
+            .select()
+            .single()
+
+        if (orderError) throw orderError
+
+        // 3. Create the Order Item
+        const { error: itemError } = await supabaseAdmin
+            .from('order_items')
+            .insert({
+                order_id: order.id,
+                product_id: productId,
+                quantity: 1,
+                unit_price: product.price
+            })
+
+        if (itemError) {
+            await supabaseAdmin.from('orders').delete().eq('id', order.id)
+            throw itemError
+        }
+
+        revalidatePath('/admin')
+        return { success: true, orderId: order.id }
+    } catch (error: any) {
+        console.error('Error in createOrder:', error)
+        return { success: false, error: error.message }
+    }
+}
+

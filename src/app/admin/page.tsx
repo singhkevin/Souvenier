@@ -88,14 +88,14 @@ export default function AdminDashboard() {
                                             <span className="text-[10px] text-gray-500 uppercase font-black">Total</span>
                                         </div>
                                     ) : (
-                                        <span className={`${type === 'order' ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-500' : 'bg-amber-500/10 border-amber-500/30 text-amber-500'} border px-3 py-1 rounded-full uppercase text-[10px] font-black tracking-tighter`}>
+                                        <span className="bg-amber-500/10 border-amber-500/30 text-amber-500 border px-3 py-1 rounded-full uppercase text-[10px] font-black tracking-tighter">
                                             {item.status}
                                         </span>
                                     )}
                                 </td>
                                 <td className="px-8 py-6 text-sm">
                                     {type === 'order' ? (
-                                        <span className={`${type === 'order' ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-500' : 'bg-amber-500/10 border-amber-500/30 text-amber-500'} border px-3 py-1 rounded-full uppercase text-[10px] font-black tracking-tighter`}>
+                                        <span className="bg-emerald-500/10 border-emerald-500/30 text-emerald-500 border px-3 py-1 rounded-full uppercase text-[10px] font-black tracking-tighter">
                                             {item.status}
                                         </span>
                                     ) : (
