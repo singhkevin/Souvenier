@@ -72,8 +72,20 @@ export default function AdminLayout({
         return children
     }
 
-    // Guard: If not on login page and no admin user, don't render the dashboard
+    // Guard: If not on login page and no admin user
     if (!user || user.user_metadata?.role !== 'admin') {
+        // If not logged in at all, keep showing loading while redirect happens
+        if (!user && pathname !== '/admin/login') {
+            return (
+                <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+                    <div className="flex flex-col items-center gap-4">
+                        <div className="w-12 h-12 border-4 border-purple-500/20 border-t-purple-500 rounded-full animate-spin" />
+                        <p className="text-gray-500 font-bold text-sm uppercase tracking-widest">Redirecting...</p>
+                    </div>
+                </div>
+            )
+        }
+
         const isClientUser = user && user.user_metadata?.role !== 'admin';
 
         return (
