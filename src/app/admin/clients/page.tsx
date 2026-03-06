@@ -76,9 +76,6 @@ export default function ClientManager() {
                     <h1 className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
                         Client Manager
                     </h1>
-                    <a href="/admin" className="text-sm font-bold text-gray-500 hover:text-white transition-colors">
-                        &larr; Back to Dashboard
-                    </a>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">

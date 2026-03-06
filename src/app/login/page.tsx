@@ -32,7 +32,10 @@ export default function LoginPage() {
                     .eq('id', authData.user.id)
                     .single()
 
-                if (profileError) throw profileError
+                if (profileError) {
+                    console.error('Profile fetch error:', profileError)
+                    throw new Error('Could not find your user profile.')
+                }
 
                 if (profileData?.client_id) {
                     // Fetch slug from clients
@@ -42,7 +45,10 @@ export default function LoginPage() {
                         .eq('id', profileData.client_id)
                         .single()
 
-                    if (clientError) throw clientError
+                    if (clientError) {
+                        console.error('Client fetch error:', clientError)
+                        throw new Error('Could not find client associated with your profile.')
+                    }
 
                     if (clientData?.slug) {
                         router.push(`/${clientData.slug}`)
@@ -50,7 +56,7 @@ export default function LoginPage() {
                         setError('Client slug not found.')
                     }
                 } else {
-                    setError('User profile or client ID not found.')
+                    setError('Your account is not associated with any brand storefront.')
                 }
             }
         } catch (err: any) {

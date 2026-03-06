@@ -120,12 +120,8 @@ export default function AdminDashboard() {
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center mb-12">
                     <h1 className="text-4xl font-black bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
-                        Admin Dashboard
+                        Dashboard Overview
                     </h1>
-                    <div className="flex gap-4">
-                        <a href="/admin/clients" className="bg-gray-900 border border-gray-800 px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors font-bold text-sm">Manage Clients</a>
-                        <a href="/admin/products" className="bg-purple-600 px-6 py-3 rounded-xl hover:bg-purple-700 transition-colors font-bold text-sm shadow-lg shadow-purple-500/20">Manage Products</a>
-                    </div>
                 </div>
 
                 {/* Real-time Toasts */}
